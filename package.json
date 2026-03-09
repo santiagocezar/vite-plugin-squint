@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "A experimental integration with the Squint Clojurescript dialect for Vite",
   "type": "module",
+  "files": [
+    "index.js"
+  ],
   "scripts": {},
   "keywords": [
     "clojurescript",
