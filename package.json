@@ -1,0 +1,21 @@
+{
+  "name": "@scezar/vite-plugin-squint",
+  "version": "0.0.1",
+  "description": "A experimental integration with the Squint Clojurescript dialect for Vite",
+  "type": "module",
+  "scripts": {},
+  "keywords": [
+    "clojurescript",
+    "cljs",
+    "vite"
+  ],
+  "author": "Santiago Cézar <santiagocezar2013@gmail.com>",
+  "license": "MIT",
+  "repository": "santiagocezar/vite-plugin-squint",
+  "devDependencies": {
+    "vite": "^7.3.1"
+  },
+  "peerDependencies": {
+    "squint-cljs": "^0.10.186"
+  }
+}
