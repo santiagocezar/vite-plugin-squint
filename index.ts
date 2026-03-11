@@ -14,6 +14,7 @@ export default function plugin(opts: SquintPluginOptions): Plugin {
 
     return {
         name: "squint",
+        enforce: "pre",
 
         async load(id) {
             if (id.endsWith(".jsx")) {
@@ -57,6 +58,11 @@ export default function plugin(opts: SquintPluginOptions): Plugin {
             // Resolve the (fake) .jsx files
             else if (id.endsWith(".jsx")) {
                 id = id.slice(0, -4);
+            }
+
+            if (!extensions.some((ext) => id.endsWith(ext))) {
+                // Not ClojureScript, Don't Care
+                return;
             }
 
             const resolved = await this.resolve(id, importer);
