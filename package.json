@@ -1,6 +1,6 @@
 {
   "name": "@scezar/vite-plugin-squint",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A experimental integration with the Squint Clojurescript dialect for Vite",
   "type": "module",
   "files": [
