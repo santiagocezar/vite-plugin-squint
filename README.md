@@ -4,6 +4,8 @@ A experimental integration with the [Squint Clojurescript dialect](https://githu
 
 > ⚠️ Squint is already a WIP and this plugin is experimental, so expect double trouble.
 
+Initially written from scratch, .jsx and hot-reload support based on [previous efforts](https://github.com/SevereOverfl0w/vite-plugin-squint).
+
 ## TODO
 
 - [ ] Do the same with [Cherry](https://github.com/squint-cljs/cherry). Problem is, `cherry.compileString` ignores the `resolve-ns` option.
