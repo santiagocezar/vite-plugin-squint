@@ -1,12 +1,21 @@
 {
   "name": "@scezar/vite-plugin-squint",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A experimental integration with the Squint Clojurescript dialect for Vite",
   "type": "module",
   "files": [
-    "index.js"
+    "dist/index.js",
+    "dist/index.d.ts"
   ],
-  "scripts": {},
+  "exports": {
+    ".": {
+      "default": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "prepare": "tsc"
+  },
   "keywords": [
     "clojurescript",
     "cljs",
@@ -20,5 +29,8 @@
   },
   "peerDependencies": {
     "squint-cljs": "^0.10.186"
+  },
+  "dependencies": {
+    "typescript": "^5.9.3"
   }
 }

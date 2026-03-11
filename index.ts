@@ -1,17 +1,13 @@
 import { compileString } from "squint-cljs/node-api.js";
+import type { Plugin } from "vite";
 
-/**
- * @typedef SquintPluginOptions
- * @prop {string[]} paths Aa
- */
+interface SquintPluginOptions {
+    paths: string[];
+}
 
 const extensions = [".cljs", ".cljc"];
 
-/**
- * @param {SquintPluginOptions} opts
- * @returns {import("vite").Plugin}
- **/
-export default function plugin(opts) {
+export default function plugin(opts: SquintPluginOptions): Plugin {
     const possiblePaths = opts.paths.flatMap((base) =>
         extensions.map((ext) => ({ base, ext })),
     );
@@ -31,10 +27,7 @@ export default function plugin(opts) {
                 const generated = await compileString(src, {
                     // Leave Java-style namespace resolution to resolveId
                     // (since this function can only return a string synchronously)
-                    "resolve-ns": /** @param {string} ns */ (ns) => {
-                        console.log(ns);
-                        return "squint-cljs-ns:" + ns;
-                    },
+                    "resolve-ns": (ns: string) => "squint-cljs-ns:" + ns,
                 });
                 console.log(generated);
                 return {
