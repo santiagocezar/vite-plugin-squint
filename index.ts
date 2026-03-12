@@ -45,14 +45,15 @@ export default function plugin(opts: SquintPluginOptions): Plugin {
 
                 // Search the paths provided by opts.paths
                 const resolved = await Promise.all(
-                    possiblePaths.map(({ base, ext }) =>
-                        this.resolve(`/${base}/${path}${ext}`),
+                    possiblePaths.map(
+                        ({ base, ext }) =>
+                            this.resolve(`/${base}/${path}${ext}`), // ooh, this is recursive
                     ),
                 );
 
                 // Whatever it finds first (.cljs has priority over .cljc)
                 for (const r of resolved) {
-                    if (r) return r.id + ".jsx";
+                    if (r) return r.id;
                 }
             }
             // Resolve the (fake) .jsx files
