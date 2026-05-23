@@ -30,7 +30,6 @@ export default function plugin(opts: SquintPluginOptions): Plugin {
                     // (since this function can only return a string synchronously)
                     "resolve-ns": (ns: string) => "squint-cljs-ns:" + ns,
                 });
-                console.log(generated);
                 return {
                     code: generated.javascript,
                 };
@@ -62,18 +61,21 @@ export default function plugin(opts: SquintPluginOptions): Plugin {
             }
 
             if (!extensions.some((ext) => id.endsWith(ext))) {
-                // Not ClojureScript, Don't Care
+                // Not ClojureScript, Don't Care.
                 return;
             }
 
             const resolved = await this.resolve(id, importer);
 
             if (resolved) {
+                // We just assume all squint files contain JSX.
                 return resolved.id + ".jsx";
             }
         },
 
         handleHotUpdate({ file, server, modules }) {
+            // From someone else's attempt:
+            // https://github.com/brandonstubbs/vite-plugin-squint/issues/19#issuecomment-2068068478
             if (extensions.some((ext) => file.endsWith(ext))) {
                 // this needs to be the same id returned by resolveId this is what
                 // vite uses as the modules identifier
